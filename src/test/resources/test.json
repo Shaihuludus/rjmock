@@ -1,0 +1,21 @@
+{
+  "responses": [
+    {
+      "response": "d",
+      "subpath":"test",
+      "conditions":[
+        {
+          "param": "test",
+          "value": "value"
+        }
+      ]
+    },
+    {
+      "response": "s",
+      "subpath":"_any_",
+      "conditions":[
+
+      ]
+    }
+  ]
+}

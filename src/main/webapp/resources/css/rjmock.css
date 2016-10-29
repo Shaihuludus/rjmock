@@ -1,0 +1,33 @@
+body {
+    padding-top: 50px;
+}
+.starter-template {
+    padding: 40px 15px;
+}
+.pagination-center {
+    text-align: center;
+}
+
+td.details-control {
+    background: url('../images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('../images/details_close.png') no-repeat center center;
+}
+
+.top-buffer {
+     margin-top: 20;
+}
+
+.top-sm-buffer {
+    margin-top: 10;
+}
+
+.table-size td {
+    font-size: 14
+}
+
+.table-size th {
+    font-size: 14
+}
