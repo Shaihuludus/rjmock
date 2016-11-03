@@ -18,7 +18,7 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li id="homeLink" class="active"><a href="library">Home</a></li>
+                <li id="homeLink" class="active"><a href="admin">Home</a></li>
             </ul>
          <div class="navbar-right">
              <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#aboutModal">About</button>

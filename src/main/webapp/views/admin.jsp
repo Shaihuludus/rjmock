@@ -26,7 +26,7 @@
 <body>
 <div class="container">
     <div class="starter-template">
-        ADMINnhh
+
     </div>
 </div>
 </body>

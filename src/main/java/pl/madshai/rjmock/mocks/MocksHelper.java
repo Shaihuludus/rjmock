@@ -23,6 +23,9 @@ package pl.madshai.rjmock.mocks;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Shai on 2016-10-09.
  */
@@ -46,5 +49,13 @@ public final class MocksHelper {
 			subpath = StringUtils.substringBefore(subpath,"?");
 		}
 		return subpath;
+	}
+
+	public static Map<String,String> getParametersFromUrl(String requestURI){
+		Map<String,String> parameters = new HashMap<>();
+		if(requestURI.contains("?")){
+			String parametersURI = StringUtils.substringAfter(requestURI,"?");
+		}
+		return parameters;
 	}
 }
