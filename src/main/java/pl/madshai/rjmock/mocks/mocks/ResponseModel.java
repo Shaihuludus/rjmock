@@ -19,30 +19,62 @@
  *  under the License.
  */
 
-package pl.madshai.rjmock.configuration.mocks;
+package pl.madshai.rjmock.mocks.mocks;
+
+import java.util.List;
 
 /**
  * Created by Shai on 2016-10-08.
  */
-public class ConditionModel {
+public class ResponseModel {
 
-	private String param;
+	private String response;
 
-	private String value;
+	private String subpath;
 
-	public String getParam() {
-		return param;
+	private int code;
+
+	private String type;
+
+	private List<ConditionModel> conditions;
+
+	public String getResponse() {
+		return response;
 	}
 
-	public void setParam(String param) {
-		this.param = param;
+	public void setResponse(String response) {
+		this.response = response;
 	}
 
-	public String getValue() {
-		return value;
+	public String getSubpath() {
+		return subpath;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public void setSubpath(String subpath) {
+		this.subpath = subpath;
+	}
+
+	public List<ConditionModel> getConditions() {
+		return conditions;
+	}
+
+	public void setConditions(List<ConditionModel> conditions) {
+		this.conditions = conditions;
+	}
+
+	public int getCode() {
+		return code;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 }

@@ -22,8 +22,8 @@
 package pl.madshai.rjmock.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import pl.madshai.rjmock.configuration.mocks.PackageModel;
 import pl.madshai.rjmock.exceptions.MocksException;
+import pl.madshai.rjmock.mocks.mocks.PackageModel;
 
 /**
  * Created by Shai on 2016-10-08.
@@ -36,10 +36,11 @@ public class MocksConfiguration {
 	private ApplicationConfiguration applicationConfiguration;
 
 	@Autowired
-	private MocksReader mocksReader;
+	private MocksConfigurationReader mocksConfigurationReader;
 
 	public PackageModel retrieveMocksConfiguration(String category) throws MocksException {
-		return mocksReader.readPackageModel(applicationConfiguration.retrieveDataDirectory() + DESCRIPTORS_DIR + category + ".json");
+		return mocksConfigurationReader
+				.readPackageModel(applicationConfiguration.retrieveDataDirectory() + DESCRIPTORS_DIR + category + ".json");
 	}
 
 }

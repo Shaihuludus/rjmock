@@ -1,8 +1,10 @@
 {
   "responses": [
     {
-      "response": "d",
-      "subpath":"test",
+      "response": "test/test.json",
+      "subpath": "test",
+      "code": 200,
+      "type": "json",
       "conditions":[
         {
           "param": "test",
@@ -13,6 +15,8 @@
     {
       "response": "s",
       "subpath":"_any_",
+      "code": 404,
+      "type": "text",
       "conditions":[
 
       ]

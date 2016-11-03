@@ -19,22 +19,29 @@
  *  under the License.
  */
 
-package pl.madshai.rjmock.configuration.mocks;
+package pl.madshai.rjmock.configuration;
 
-import java.util.List;
+import org.junit.Test;
+import pl.madshai.rjmock.mocks.mocks.PackageModel;
+import pl.madshai.rjmock.exceptions.MocksException;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.*;
 
 /**
- * Created by Shai on 2016-10-08.
+ * Created by Shai on 2016-10-09.
  */
-public class PackageModel {
 
-	private List<ResponseModel> responses;
+public class MocksConfigurationReaderTest {
 
-	public List<ResponseModel> getResponses() {
-		return responses;
+	private MocksConfigurationReader tested = new MocksConfigurationReader();
+
+	@Test
+	public void readPackageTest() throws MocksException {
+		String path = this.getClass().getResource("/test.json").getPath();
+		PackageModel packageModel = tested.readPackageModel(path);
+		assertThat(packageModel.getResponses().size(),is(2));
+		assertThat(packageModel.getResponses().get(0).getConditions().size(), is(1));
 	}
 
-	public void setResponses(List<ResponseModel> responses) {
-		this.responses = responses;
-	}
 }

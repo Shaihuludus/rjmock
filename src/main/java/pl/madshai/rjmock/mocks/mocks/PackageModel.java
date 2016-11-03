@@ -19,23 +19,22 @@
  *  under the License.
  */
 
-package pl.madshai.rjmock.controllers.mock;
+package pl.madshai.rjmock.mocks.mocks;
 
-import org.apache.commons.lang3.StringUtils;
+import java.util.List;
 
 /**
- * Created by Shai on 2016-10-09.
+ * Created by Shai on 2016-10-08.
  */
-public final class MockControllerHelper {
+public class PackageModel {
 
-	private static final String RJMOCK = "/rjmock/";
+	private List<ResponseModel> responses;
 
-	private MockControllerHelper(){
-		//empty for helper class
+	public List<ResponseModel> getResponses() {
+		return responses;
 	}
 
-	public static String getCategoryFromUrl(String url){
-		String removeFirstSlash = StringUtils.substringAfter(url, RJMOCK);
-		return StringUtils.substringBefore(removeFirstSlash, "/");
+	public void setResponses(List<ResponseModel> responses) {
+		this.responses = responses;
 	}
 }

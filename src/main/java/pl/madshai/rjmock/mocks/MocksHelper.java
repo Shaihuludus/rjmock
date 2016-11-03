@@ -19,42 +19,32 @@
  *  under the License.
  */
 
-package pl.madshai.rjmock.configuration.mocks;
+package pl.madshai.rjmock.mocks;
 
-import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 
 /**
- * Created by Shai on 2016-10-08.
+ * Created by Shai on 2016-10-09.
  */
-public class ResponseModel {
+public final class MocksHelper {
 
-	private String response;
+	private static final String RJMOCK = "/rjmock/";
 
-	private String subpath;
-
-	private List<ConditionModel> conditions;
-
-	public String getResponse() {
-		return response;
+	private MocksHelper(){
+		//empty for helper class
 	}
 
-	public void setResponse(String response) {
-		this.response = response;
+	public static String getCategoryFromUrl(String url){
+		String removeFirstSlash = StringUtils.substringAfter(url, RJMOCK);
+		return StringUtils.substringBefore(removeFirstSlash, "/");
 	}
 
-	public String getSubpath() {
+	public static String getSubpathFromUrl(String url){
+		String removeFirstSlash = StringUtils.substringAfter(url, RJMOCK);
+		String subpath = StringUtils.substringAfter(removeFirstSlash, "/");
+		if(subpath.contains("?")){
+			subpath = StringUtils.substringBefore(subpath,"?");
+		}
 		return subpath;
-	}
-
-	public void setSubpath(String subpath) {
-		this.subpath = subpath;
-	}
-
-	public List<ConditionModel> getConditions() {
-		return conditions;
-	}
-
-	public void setConditions(List<ConditionModel> conditions) {
-		this.conditions = conditions;
 	}
 }

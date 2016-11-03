@@ -25,8 +25,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.madshai.rjmock.configuration.MocksConfiguration;
+import pl.madshai.rjmock.configuration.ApplicationConfiguration;
 import pl.madshai.rjmock.exceptions.MocksException;
+import pl.madshai.rjmock.mocks.MockReader;
+import pl.madshai.rjmock.mocks.MocksResponseReader;
+import pl.madshai.rjmock.mocks.mocks.ResponseModel;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -37,15 +40,29 @@ import javax.servlet.http.HttpServletRequest;
 public class MockController {
 
 	@Autowired
-	private MocksConfiguration mocksConfiguration;
+	private MockReader mockReader;
 
+	@Autowired
+	private MocksResponseReader mocksResponseReader;
+
+	@Autowired
+	private ApplicationConfiguration applicationConfiguration;
 
 	@RequestMapping(value = "/rjmock/**")
 	public ResponseEntity mockResponse(HttpServletRequest request) {
 		String requestURI = request.getRequestURI();
-		String category = MockControllerHelper.getCategoryFromUrl(requestURI);
 		try {
-			return ResponseEntity.ok(mocksConfiguration.retrieveMocksConfiguration(category));
+			ResponseModel responseModel = mockReader.readResponse(requestURI);
+			String response = null;
+			if (responseModel.getType().equals("json")) {
+				response = mocksResponseReader.readMockFile(
+						applicationConfiguration.retrieveDataDirectory() + responseModel
+								.getResponse());
+			}
+			if (responseModel.getType().equals("text")) {
+				response = responseModel.getResponse();
+			}
+			return ResponseEntity.status(responseModel.getCode()).body(response);
 		} catch (MocksException e) {
 			return ResponseEntity.notFound().build();
 		}

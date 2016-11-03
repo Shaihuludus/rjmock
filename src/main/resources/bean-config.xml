@@ -6,7 +6,11 @@
 
     <bean id="applicationConfiguration" class="pl.madshai.rjmock.configuration.ApplicationConfiguration"/>
 
-    <bean id="mocksReader" class="pl.madshai.rjmock.configuration.MocksReader"/>
+    <bean id="mocksConfigurationReader" class="pl.madshai.rjmock.configuration.MocksConfigurationReader"/>
+
+    <bean id="mocksReader" class="pl.madshai.rjmock.mocks.MockReader"/>
+
+    <bean id="mocksResponseReader" class="pl.madshai.rjmock.mocks.MocksResponseReader"/>
     
     <bean id="mocksConfiguration" class="pl.madshai.rjmock.configuration.MocksConfiguration" />
 

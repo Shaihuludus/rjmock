@@ -24,7 +24,7 @@ package pl.madshai.rjmock.configuration;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.commons.io.FileUtils;
-import pl.madshai.rjmock.configuration.mocks.PackageModel;
+import pl.madshai.rjmock.mocks.mocks.PackageModel;
 import pl.madshai.rjmock.exceptions.MocksException;
 
 import java.io.File;
@@ -34,7 +34,7 @@ import java.nio.charset.Charset;
 /**
  * Created by Shai on 2016-10-09.
  */
-public final class MocksReader {
+public final class MocksConfigurationReader {
 
 	private Gson gson = new GsonBuilder().create();
 
@@ -42,7 +42,7 @@ public final class MocksReader {
 		PackageModel toReturn = null;
 		File mockFile = new File(path);
 		if (mockFile.exists()) {
-			String mockString = null;
+			String mockString;
 			try {
 				mockString = FileUtils.readFileToString(mockFile, Charset.defaultCharset());
 				toReturn = gson.fromJson(mockString, PackageModel.class);
