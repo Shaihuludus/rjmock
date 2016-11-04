@@ -16,10 +16,7 @@
       "response": "s",
       "subpath":"_any_",
       "code": 404,
-      "type": "text",
-      "conditions":[
-
-      ]
+      "type": "text"
     }
   ]
 }

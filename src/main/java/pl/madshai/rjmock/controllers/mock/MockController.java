@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.madshai.rjmock.configuration.ApplicationConfiguration;
 import pl.madshai.rjmock.exceptions.MocksException;
 import pl.madshai.rjmock.mocks.MockReader;
-import pl.madshai.rjmock.mocks.MocksResponseReader;
+import pl.madshai.rjmock.mocks.MocksResponseFileReader;
 import pl.madshai.rjmock.mocks.mocks.ResponseModel;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,24 +39,25 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class MockController {
 
+	private static final String RESPONSES_DIR = "responses/";
+
 	@Autowired
 	private MockReader mockReader;
 
 	@Autowired
-	private MocksResponseReader mocksResponseReader;
+	private MocksResponseFileReader mocksResponseFileReader;
 
 	@Autowired
 	private ApplicationConfiguration applicationConfiguration;
 
 	@RequestMapping(value = "/rjmock/**")
 	public ResponseEntity mockResponse(HttpServletRequest request) {
-		String requestURI = request.getRequestURI();
 		try {
-			ResponseModel responseModel = mockReader.readResponse(requestURI);
+			ResponseModel responseModel = mockReader.readResponse(request.getRequestURI(), request.getParameterMap());
 			String response = null;
 			if (responseModel.getType().equals("json")) {
-				response = mocksResponseReader.readMockFile(
-						applicationConfiguration.retrieveDataDirectory() + responseModel
+				response = mocksResponseFileReader.readMockFile(
+						applicationConfiguration.retrieveDataDirectory() + RESPONSES_DIR + responseModel
 								.getResponse());
 			}
 			if (responseModel.getType().equals("text")) {

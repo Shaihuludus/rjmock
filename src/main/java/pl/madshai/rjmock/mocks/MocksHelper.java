@@ -22,6 +22,7 @@
 package pl.madshai.rjmock.mocks;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,13 +50,5 @@ public final class MocksHelper {
 			subpath = StringUtils.substringBefore(subpath,"?");
 		}
 		return subpath;
-	}
-
-	public static Map<String,String> getParametersFromUrl(String requestURI){
-		Map<String,String> parameters = new HashMap<>();
-		if(requestURI.contains("?")){
-			String parametersURI = StringUtils.substringAfter(requestURI,"?");
-		}
-		return parameters;
 	}
 }

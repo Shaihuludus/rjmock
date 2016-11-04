@@ -35,16 +35,6 @@
             <fileMode>0755</fileMode>
         </fileSet>
 
-        <fileSet>
-            <directory>scripts</directory>
-            <outputDirectory></outputDirectory>
-            <includes>
-                <include>*.sh</include>
-                <include>*.bat</include>
-            </includes>
-            <filtered>true</filtered>
-            <fileMode>0755</fileMode>
-        </fileSet>
     </fileSets>
     <dependencySets>
         <dependencySet>

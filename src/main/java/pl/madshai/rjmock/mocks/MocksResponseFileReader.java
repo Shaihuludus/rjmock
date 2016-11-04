@@ -19,36 +19,35 @@
  *  under the License.
  */
 
-body {
-    padding-top: 50px;
-}
-.starter-template {
-    padding: 40px 15px;
-}
-.pagination-center {
-    text-align: center;
-}
+package pl.madshai.rjmock.mocks;
 
-td.details-control {
-    background: url('../images/details_open.png') no-repeat center center;
-    cursor: pointer;
-}
-tr.shown td.details-control {
-    background: url('../images/details_close.png') no-repeat center center;
-}
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
+import pl.madshai.rjmock.exceptions.MocksException;
 
-.top-buffer {
-     margin-top: 20px;
-}
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
 
-.top-sm-buffer {
-    margin-top: 10px;
-}
+/**
+ * Created by daniel.madejek on 2016-11-03.
+ */
+public class MocksResponseFileReader {
 
-.table-size td {
-    font-size: 14px;
-}
+	private Gson gson = new GsonBuilder().create();
 
-.table-size th {
-    font-size: 14px;
+	public String readMockFile(String path) throws MocksException {
+		File mockFile = new File(path);
+		if (mockFile.exists()) {
+			try {
+				return FileUtils.readFileToString(mockFile, Charset.defaultCharset());
+			} catch (IOException e) {
+				throw new MocksException(e);
+			}
+		}
+		return StringUtils.EMPTY;
+	}
+
 }
