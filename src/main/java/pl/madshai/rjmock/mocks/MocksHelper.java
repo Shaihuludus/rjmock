@@ -23,12 +23,13 @@ package pl.madshai.rjmock.mocks;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.util.UriComponentsBuilder;
+import pl.madshai.rjmock.mocks.mocks.ResponseModel;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Shai on 2016-10-09.
+ * Helper class for retrieving information from url
  */
 public final class MocksHelper {
 
@@ -38,11 +39,21 @@ public final class MocksHelper {
 		//empty for helper class
 	}
 
+	/**
+	 * Get category
+	 * @param url
+	 * @return
+	 */
 	public static String getCategoryFromUrl(String url){
 		String removeFirstSlash = StringUtils.substringAfter(url, RJMOCK);
 		return StringUtils.substringBefore(removeFirstSlash, "/");
 	}
 
+	/**
+	 * Get subpath
+	 * @param url
+	 * @return
+	 */
 	public static String getSubpathFromUrl(String url){
 		String removeFirstSlash = StringUtils.substringAfter(url, RJMOCK);
 		String subpath = StringUtils.substringAfter(removeFirstSlash, "/");
@@ -50,5 +61,13 @@ public final class MocksHelper {
 			subpath = StringUtils.substringBefore(subpath,"?");
 		}
 		return subpath;
+	}
+
+	public static ResponseModel createEmptyResponse() {
+		ResponseModel toReturn = new ResponseModel();
+		toReturn.setCode(404);
+		toReturn.setType("text");
+		toReturn.setResponse(StringUtils.EMPTY);
+		return toReturn;
 	}
 }

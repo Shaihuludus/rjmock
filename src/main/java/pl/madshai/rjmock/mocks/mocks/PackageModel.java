@@ -24,7 +24,7 @@ package pl.madshai.rjmock.mocks.mocks;
 import java.util.List;
 
 /**
- * Created by Shai on 2016-10-08.
+ * Represents configuration for one responses package
  */
 public class PackageModel {
 

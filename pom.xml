@@ -27,7 +27,7 @@
 
     <groupId>pl.madshai</groupId>
     <artifactId>rjmock</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -22,7 +22,7 @@
 package pl.madshai.rjmock.mocks.mocks;
 
 /**
- * Created by Shai on 2016-10-08.
+ * Represents conditions for mock response
  */
 public class ConditionModel {
 

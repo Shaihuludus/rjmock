@@ -26,7 +26,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.util.StringUtils;
 
 /**
- *
+ * Reads application configuration
  */
 public class ApplicationConfiguration {
 
@@ -37,10 +37,19 @@ public class ApplicationConfiguration {
 	@Autowired
 	private Environment env;
 
+	/**
+	 * Reads selected property
+	 * @param property
+	 * @return
+	 */
 	public String getProperty(String property) {
 		return env.getProperty(property);
 	}
 
+	/**
+	 * Gets location of data folder
+	 * @return
+	 */
 	public String retrieveDataDirectory() {
 		String dataDir = env.getProperty(DATA_DIR);
 		return StringUtils.isEmpty(dataDir) ? System.getProperty("user.home") + "/" + MOCKS_DIR : dataDir + "/" + MOCKS_DIR;

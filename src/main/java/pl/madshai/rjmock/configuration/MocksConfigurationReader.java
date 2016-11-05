@@ -32,7 +32,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 /**
- * Created by Shai on 2016-10-09.
+ * Reads mock configuration from file
  */
 public final class MocksConfigurationReader {
 

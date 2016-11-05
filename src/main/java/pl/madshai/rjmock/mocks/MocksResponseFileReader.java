@@ -32,12 +32,18 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 /**
- * Created by daniel.madejek on 2016-11-03.
+ * Bean that reads from selected response file
  */
 public class MocksResponseFileReader {
 
 	private Gson gson = new GsonBuilder().create();
 
+	/**
+	 * Reads file
+	 * @param path path to file
+	 * @return file content as String
+	 * @throws MocksException
+	 */
 	public String readMockFile(String path) throws MocksException {
 		File mockFile = new File(path);
 		if (mockFile.exists()) {

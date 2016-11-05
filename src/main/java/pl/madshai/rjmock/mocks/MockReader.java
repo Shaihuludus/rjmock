@@ -31,35 +31,43 @@ import pl.madshai.rjmock.mocks.mocks.ConditionModel;
 import pl.madshai.rjmock.mocks.mocks.PackageModel;
 import pl.madshai.rjmock.mocks.mocks.ResponseModel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 /**
- * Created by daniel.madejek on 2016-11-03.
+ * Class that prepares response for request
  */
 public final class MockReader {
 
 	@Autowired
 	private MocksConfiguration mocksConfiguration;
 
+	/**
+	 * Creates response
+	 * @param requestURI request url
+	 * @param parameters query parameters
+	 * @return
+	 * @throws MocksException
+	 */
 	public ResponseModel readResponse(String requestURI, Map<String, String[]> parameters) throws MocksException {
 
 		String category = MocksHelper.getCategoryFromUrl(requestURI);
 		PackageModel packageModel = mocksConfiguration.retrieveMocksConfiguration(category);
+		ResponseModel toReturn = MocksHelper.createEmptyResponse();
 
-		ResponseModel anyResponse = null;
 		String subpathFromUrl = MocksHelper.getSubpathFromUrl(requestURI);
-		List<ResponseModel> responses = packageModel.getResponses();
+		List<ResponseModel> responses = packageModel != null ? packageModel.getResponses() : new ArrayList<>();
 		for (ResponseModel response : responses) {
 			if (response.getSubpath().equals(subpathFromUrl) && validConditions(parameters, response.getConditions())) {
-
-				return response;
+				toReturn = response;
+				break;
 			}
 			if (response.getSubpath().equals("_any_") && validConditions(parameters, response.getConditions())) {
-				anyResponse = response;
+				toReturn = response;
 			}
 		}
-		return anyResponse;
+		return toReturn;
 	}
 
 	private boolean validConditions(Map<String, String[]> parameters, List<ConditionModel> conditions) {

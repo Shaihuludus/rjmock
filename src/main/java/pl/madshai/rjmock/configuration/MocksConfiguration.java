@@ -26,7 +26,7 @@ import pl.madshai.rjmock.exceptions.MocksException;
 import pl.madshai.rjmock.mocks.mocks.PackageModel;
 
 /**
- * Created by Shai on 2016-10-08.
+ * Reads mock configuration
  */
 public class MocksConfiguration {
 
@@ -38,6 +38,12 @@ public class MocksConfiguration {
 	@Autowired
 	private MocksConfigurationReader mocksConfigurationReader;
 
+	/**
+	 * Reads configuration for selected category
+	 * @param category
+	 * @return
+	 * @throws MocksException
+	 */
 	public PackageModel retrieveMocksConfiguration(String category) throws MocksException {
 		return mocksConfigurationReader
 				.readPackageModel(applicationConfiguration.retrieveDataDirectory() + DESCRIPTORS_DIR + category + ".json");

@@ -35,6 +35,11 @@
             <fileMode>0755</fileMode>
         </fileSet>
 
+        <fileSet>
+            <directory>RJMockData</directory>
+            <filtered>true</filtered>
+            <fileMode>0755</fileMode>
+        </fileSet>
     </fileSets>
     <dependencySets>
         <dependencySet>

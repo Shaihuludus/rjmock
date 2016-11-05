@@ -22,7 +22,7 @@
 package pl.madshai.rjmock.exceptions;
 
 /**
- * Created by Shai on 2016-10-09.
+ * Custom exception
  */
 public class MocksException extends Exception {
 
