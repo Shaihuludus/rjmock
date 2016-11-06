@@ -23,8 +23,6 @@ package pl.madshai.rjmock.mocks;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.util.UriComponentsBuilder;
 import pl.madshai.rjmock.configuration.MocksConfiguration;
 import pl.madshai.rjmock.exceptions.MocksException;
 import pl.madshai.rjmock.mocks.mocks.ConditionModel;
@@ -52,8 +50,8 @@ public final class MockReader {
 	 */
 	public ResponseModel readResponse(String requestURI, Map<String, String[]> parameters) throws MocksException {
 
-		String category = MocksHelper.getCategoryFromUrl(requestURI);
-		PackageModel packageModel = mocksConfiguration.retrieveMocksConfiguration(category);
+		String packageName = MocksHelper.getPackageFromUrl(requestURI);
+		PackageModel packageModel = mocksConfiguration.retrieveMocksConfiguration(packageName);
 		ResponseModel toReturn = MocksHelper.createEmptyResponse();
 
 		String subpathFromUrl = MocksHelper.getSubpathFromUrl(requestURI);

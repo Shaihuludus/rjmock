@@ -44,7 +44,7 @@ public final class MocksHelper {
 	 * @param url
 	 * @return
 	 */
-	public static String getCategoryFromUrl(String url){
+	public static String getPackageFromUrl(String url){
 		String removeFirstSlash = StringUtils.substringAfter(url, RJMOCK);
 		return StringUtils.substringBefore(removeFirstSlash, "/");
 	}
